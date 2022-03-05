@@ -1,0 +1,52 @@
+html{
+    background-color: darkgreen;
+    height: 600px;
+}
+h1{
+    margin: 0;
+}
+h5{
+    margin: 0;
+}
+/* Keep this rule in style.css */
+
+.myCards{
+    display: flex;
+    justify-content: space-between;
+}
+
+.enemyCards{
+    display: flex;
+    justify-content: space-between;
+}
+.enemyItem{
+
+    margin: 10px;
+    padding: auto;
+    height: 100px;
+    align-items: flex-start;
+
+}
+.myItems{
+
+    margin: 10px;
+
+    align-items: flex-end;
+    height: 100px;
+}
+
+.deck{
+    text-align: center;
+}
+
+.title{
+    text-align: center;
+    margin-top: 0%;
+}
+
+
+.buttons{
+    display: flex;
+    justify-content: center;
+}
+/* Add more rules here */
