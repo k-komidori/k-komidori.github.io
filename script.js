@@ -14,7 +14,7 @@ let enemyCards = [];
 let winOrLose = false;//boolean
 
 /**************************************
- イベント関数
+ ユーザー操作に連動する関数
  **************************************/
 // ・　読み込み終了後
 window.addEventListener("load", baseload);
@@ -41,7 +41,7 @@ function baseload() {
   pickMyCard();
   pickEnemyCard();
   //画面を更新
-  replace();
+  replace(0);
   //デバッグ情報（グローバル変数の現在値）
   debug();
 }
@@ -76,13 +76,12 @@ function pickMyCard() {
 
 //aite ka-do hiku
 function pickEnemyCard() {
-  if (enemyCards.length < 6) {
-    if (pickAi) {
-      //山札配列から一枚取り出す
-      let pickedCard = deck.pop()
-      //取り出したカードを相手配列に格納
-      enemyCards.push(pickedCard)
-    }
+  //考える関数がfalseになるか、場の数いっぱいになるまで繰り返し引く
+  while (pickAi() === true && enemyCards.length < 6) {
+    //山札配列から一枚取り出す
+    let pickedCard = deck.pop()
+    //取り出したカードを相手配列に格納
+    enemyCards.push(pickedCard)
   }
 }
 
@@ -92,21 +91,11 @@ function pickAi() {
   let total = getTotal(enemyCards)
   //引くか引かないか
   let pickOrStay = false;
-  //引く思考（合計値により確立で引く）
-  if (total <= 11) {
-    pickOrStay = 1;
-  } else if (total >= 12 && total <= 14) {
-    if (Math.rondom() < 0.75) {
-      pickOrStay = 1;
-    } else if (total >= 15 && total <= 18) {
-      if (Math.rondom() < 0.4) {
-        pickOrStay = 1;
-      } else if (total >= 19 && total <= 20) {
-        if (Math.rondom() < 0.1) {
-          pickOrStay = 1;
-        }
-      }
-    }
+  //引く思考（18以上なら引かない）
+  if (total <= 17) {
+    pickOrStay = true;
+  } else {
+    pickOrStay = false
   }
   return pickOrStay;
 }
@@ -134,7 +123,7 @@ function getTotal(Cards) {
       Cards.includes(27) || Cards.includes(40)) {
       //10足しても21超えないならAは11とする（1はすでに足されているので10足す）
       if (total + 10 <= 21) {
-        total + 10
+        total += 10
       }
     }
   }
@@ -142,7 +131,7 @@ function getTotal(Cards) {
 }
 
 //画面を更新する関数
-function replace() {
+function replace(bool) {
   //配列に表示枠を格納
   let myField = document.querySelectorAll(".myItems")
   console.log(myField)
@@ -162,23 +151,30 @@ function replace() {
   let enemyField = document.querySelectorAll(".enemyItem")
   for (let i = 0; i < enemyField.length; i++) {
     //相手の手元にカードがあるか？  
-    if (enemyCards.length > i) {
+    if (i < 1 || (enemyCards.length > i && bool > 0)) {
       //数字に対応した画像に置き換える
-      enemyField[i].setAttribute("src","../image/" + enemyCards[i] + ".png");
+      enemyField[i].setAttribute("src", "../image/" + enemyCards[i] + ".png");
     } else {
       console.log(";;;;;;;")
-      enemyField[i].setAttribute("src","../image/card_back.png");
+      enemyField[i].setAttribute("src", "../image/card_back.png");
     }
   }
-
   //カードの合計値計算
   document.querySelector("#myTotal").innerText = getTotal(myCards)
-  document.querySelector("#enemyTotal").innerText = getTotal(enemyCards)
+  if (bool > 0) {
+    document.querySelector("#enemyTotal").innerText = getTotal(enemyCards)
+  }
 
   if (getTotal(myCards) >= 22) {
     alert("あなたの負けです")
-  } else if (getTotal(enemyCards) >= 22) {
-    alert("あなたの勝ちです！")
+    for (let i = 0; i < enemyField.length; i++) {
+      if (enemyCards.length > i) {
+        enemyField[i].setAttribute("src", "../image/" + enemyCards[i] + ".png");
+      } else {
+        enemyField[i].setAttribute("src", "../image/card_back.png");
+      }
+    }
+    document.querySelector("#enemyTotal").innerText = getTotal(enemyCards);
   }
 }
 
@@ -193,12 +189,14 @@ function pushPickUpCard() {
     //相手がカードを引く関数
     pickEnemyCard();
     //画面を更新
-    replace()
+    replace(0)
   }
 }
 
 //勝負するボタンを押した時に実行する関数
 function battle() {
+  replace(1)
+
   //勝敗結果を格納する変数宣言
   let battleResult;
 
@@ -242,7 +240,7 @@ function judge() {
 
     // 両方22以上　引き分け
   } else if (mTotal >= 22 && eneTotal >= 22) {
-    judgeResult = "Drow"
+    judgeResult = "Lose"
 
     // 両方21以下　数が多い方が勝ち　同数は引き分け
   } else {
@@ -251,7 +249,7 @@ function judge() {
     } else if (mTotal < eneTotal) {
       judgeResult = "Lose"
     } else {
-      judgeResult = "Drow"
+      judgeResult = "Lose"
     }
   }
   return judgeResult;
