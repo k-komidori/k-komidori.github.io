@@ -12,13 +12,6 @@
     <h5>カードを引いて、21を目指そう!<br>
     </h5>
   </article>
-  <article class="buttons">
-    <button id="pick">カードを引く！
-    </button>
-    <button id="battle">勝負する！
-    </button>
-    <button id="reset">リセット</button>
-  </article>
 
   <div class="enemyCards">
     <img class="enemyItem" src="../image/card_back.png">
@@ -29,14 +22,32 @@
     <img class="enemyItem" src="../image/card_back.png">
   </div>
 
-  <div class="deck">
-    <img src="../image/card_back.png" height="100px">
+  <div class="centerItems"> 
+    <div class="totalValue">
+      <div class="totalLabel">相手の合計点：　</div>
+      <div id="enemyTotal" class="total">??</div>
+    </div>
+
+    <div class="buttons">
+      <button id="pick">カードを<br>
+                        引く！
+        <input type="image" src="../image/card_back.png" width="80" >
+      </button>
+      <button id="battle">勝<br>
+                         負<br>
+                         す<br>
+                         る<br>
+                         !
+      </button>
+    </div>
+    
+    <div class="totalValue">
+      <div class="totalLabel">あなたの合計点：　</div>
+      <div id="myTotal" class="total"></div>
+    </div>
   </div>
 
-  <div class="totalValue">
-    <div id="enemyTotal" class="total"></div>
-    <div id="myTotal" class="total"></div>
-  </div>
+    <button id="reset">リセット</button>
 
   <div class="myCards">
     <img class="myItems" src="../image/card_back.png">
