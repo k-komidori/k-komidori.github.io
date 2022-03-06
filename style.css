@@ -2,17 +2,23 @@ html{
     background-color: darkgreen;
     height: 600px;
 }
+
+body{
+    height: 600px;
+}
+
 h1{
     margin: 0;
 }
 h5{
     margin: 0;
 }
-/* Keep this rule in style.css */
+
 
 .myCards{
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
 }
 
 .enemyCards{
@@ -20,23 +26,48 @@ h5{
     justify-content: space-between;
 }
 .enemyItem{
-
     margin: 10px;
     padding: auto;
-    height: 100px;
+    height: 150px;
     align-items: flex-start;
-
+    background-color: blue;
 }
 .myItems{
-
     margin: 10px;
-
     align-items: flex-end;
-    height: 100px;
+    height: 150px;
+    background-color: yellow;
 }
 
-.deck{
-    text-align: center;
+.totalValue{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-style: inset;
+    font-size: 40px;
+    height: 100;
+    width: 50;
+    background-color: darkgrey;
+}
+
+#myTotal{
+    background-color: yellow;
+}
+.totalLabel{
+    font-size: 20px;
+}
+
+#enemyTotal{
+    background-color: blue;
+}
+
+
+.centerItems{
+    height: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
 }
 
 .title{
@@ -44,9 +75,26 @@ h5{
     margin-top: 0%;
 }
 
-
+#pick{
+    width: 100px;
+}
+#battle{
+    width: 100px;
+    height: 166.36px;
+    font-size: 20px;
+}
+#reset{
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    height: 40px;
+}
 .buttons{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    height: 200px;
+    width: 300px;
+    align-items: center;
 }
-/* Add more rules here */
