@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
   <article class="title">
-    <h1>BLACK JACK </h1>
+    <h1 id="headTitle">BLACK JACK </h1>
     <h5>カードを引いて、21を目指そう!<br>
     </h5>
   </article>
-
   <div class="enemyCards">
     <img class="enemyItem" src="../image/card_back.png">
     <img class="enemyItem" src="../image/card_back.png">
@@ -21,13 +18,11 @@
     <img class="enemyItem" src="../image/card_back.png">
     <img class="enemyItem" src="../image/card_back.png">
   </div>
-
-  <div class="centerItems"> 
+  <div class="centerItems">
     <div class="totalValue">
       <div class="totalLabel">相手の合計点：　</div>
       <div id="enemyTotal" class="total">??</div>
     </div>
-
     <div class="buttons">
       <button id="pick">カードを<br>
                         引く！
@@ -40,15 +35,12 @@
                          !
       </button>
     </div>
-    
     <div class="totalValue">
       <div class="totalLabel">あなたの合計点：　</div>
       <div id="myTotal" class="total"></div>
     </div>
   </div>
-
     <button id="reset">リセット</button>
-
   <div class="myCards">
     <img class="myItems" src="../image/card_back.png">
     <img class="myItems" src="../image/card_back.png">
@@ -59,5 +51,4 @@
   </div>
   <script type="text/javascript" src="script.js"></script>
 </body>
-
 </html>
