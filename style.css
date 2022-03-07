@@ -2,25 +2,20 @@ html{
     background-color: darkgreen;
     height: 600px;
 }
-
 body{
     height: 600px;
 }
-
 h1{
     margin: 0;
 }
 h5{
     margin: 0;
 }
-
-
 .myCards{
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
 }
-
 .enemyCards{
     display: flex;
     justify-content: space-between;
@@ -38,7 +33,6 @@ h5{
     height: 150px;
     background-color: yellow;
 }
-
 .totalValue{
     display: flex;
     justify-content: space-between;
@@ -49,32 +43,25 @@ h5{
     width: 50;
     background-color: darkgrey;
 }
-
 #myTotal{
     background-color: yellow;
 }
 .totalLabel{
     font-size: 20px;
 }
-
 #enemyTotal{
     background-color: blue;
 }
-
-
 .centerItems{
     height: 200px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-
 }
-
 .title{
     text-align: center;
     margin-top: 0%;
 }
-
 #pick{
     width: 100px;
 }
