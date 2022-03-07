@@ -221,7 +221,7 @@ function showBattleResult(battleResult) {
   let outputMassage = ""
   //入っている文字列で結果を分岐
   if (battleResult === "Win") {
-    outputMassage = "あなた勝ちです！"
+    outputMassage = "あなたの勝ちです！"
   } else if (battleResult === "Lose") {
     outputMassage = "あなたの負けです。"
   } else {
